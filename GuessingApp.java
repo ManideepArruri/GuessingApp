@@ -8,7 +8,7 @@ Cooridinates the game flow:
 4.Stop when game ends
 
 @author Developer
-@version 2.0
+@version 3.0
  */
 
 import java.util.Scanner;
