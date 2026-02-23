@@ -56,6 +56,7 @@ public class GuessingApp{
             if correct number is guessed.
              */
             if("CORRECT".equals(result)){
+                win = true;
                 break;
             }
         }
