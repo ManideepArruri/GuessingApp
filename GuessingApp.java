@@ -20,12 +20,21 @@ public class GuessingApp{
         gameConfig.showRules();
 
         Scanner scanner = new Scanner(System.in);
-        int attempts = 0;
+        int attempts = 0, hintsUsed = 0;
         while(attempts < gameConfig.getMaxAttempts()){
             System.out.print("Enter your guess: ");
             int guess = scanner.nextInt();
             attempts++;
             String result = GuessValidator.validateGuess(guess,gameConfig.getTargetNumber());
+            /*
+            A hint is generated only after
+            an incorrect guess and within 
+            the allowed hint limit.
+            */
+            if(!"CORRECT".equals(result) && hintsUsed < gameConfig.getMaxHints()){
+                hintsUsed++;
+                System.out.println(HintService.generateHint(gameConfig.getTargetNumber(),hintsUsed));
+            }
             System.out.println(result);
             /*
             Stop the loop immediately
