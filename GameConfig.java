@@ -12,7 +12,7 @@
 
 import java.util.Random;
 
-public class GameConfig {
+class GameConfig {
     private final int MIN = 1;
     private final int MAX = 100;
     private final int MAX_ATTEMPTS = 7;
