@@ -1,20 +1,25 @@
 /*
 MAIN CLASS
 
-Cooridinates the game flow: 
-1.Initialize game
-2.Accept user guesses
-3.Validate guesses
-4.Stop when game ends
+Use Case 4 : Error Handling & Validation
+
+This class coordinates the game execution while ensuring
+all user inputs are safely validated before processing.
+
+Responsibilites : 
+-Initialize game configuration
+-Accept user input
+-Validate input using ValidationService
+-Handle game flow without crashing on invalid input
 
 @author Developer
-@version 3.0
+@version 4.0
  */
 
 import java.util.Scanner;
 
 public class GuessingApp{
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidInputException {
         System.out.println("Welcome to the Guessing App");
         GameConfig gameConfig = new GameConfig();
         gameConfig.showRules();
@@ -23,7 +28,7 @@ public class GuessingApp{
         int attempts = 0, hintsUsed = 0;
         while(attempts < gameConfig.getMaxAttempts()){
             System.out.print("Enter your guess: ");
-            int guess = scanner.nextInt();
+            int guess = ValidationService.validateInput(scanner.nextLine());
             attempts++;
             String result = GuessValidator.validateGuess(guess,gameConfig.getTargetNumber());
             /*
